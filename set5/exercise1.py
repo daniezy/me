@@ -62,3 +62,4 @@ if __name__ == "__main__":
     pyramid = wordy_pyramid()
     for word in pyramid:
         print(word)
+# /python

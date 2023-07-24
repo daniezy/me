@@ -28,8 +28,30 @@ def advancedGuessingGame():
     Remember to think modular. Try to keep your functions small and single
     purpose if you can!
     """
+    def super_asker(lowerbound, upperbound):
+      print("\nThis is thee guessing game")
+    lowerbound = super_asker(input(f"enter a {lowerbound}: "))
+    upperbound = super_asker(input(f"enter an {upperbound}: "))
+    input(f"a number between a {lowerbound} and {upperbound}?: )
+      lowerbound = int
+      upperbound = int
+  else:
+    print("\nInput a number only")
+  actualNumber = random.randint({lowerbound}, {upperbound})
+  guessedNumber = range({lowerbound}, {upperbound})
 
+  while not guessed:
+    try:
+      guessedNumber = int(input("guess another number: "))
+      if guessedNumber == actualNumber 
+print("You got it!")
+  else guessedNumber < actualNumber:
+    input("too small try again:")
+      if actualNumber < guessedNumber
+      input("too large try again:")
     return "You got it!"
+
+
     # the tests are looking for the exact string "You got it!". Don't modify that!
 
 
