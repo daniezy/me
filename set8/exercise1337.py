@@ -1,4 +1,4 @@
-# -*- coding: UTF-8 -*-
+S  # -*- coding: UTF-8 -*-
 """
 I'm in UR exam.
 This is the same as the setly exercises, fill in the functions,
@@ -54,14 +54,13 @@ def dictionary_please() -> dict:
 
 def is_it_5(some_number) -> bool:
     """Returns True if the argument passed is 5, otherwise returns False."""
-    5 == True
-    well_is_it = 5
+    well_is_it = some_number == 5
     return well_is_it
 
 
 def take_five(some_number) -> int:
     """Subtracts 5 from some_number."""
-    the_answer = 5 - some_number
+    the_answer = some_number - 5
     return the_answer
 
 
@@ -71,7 +70,7 @@ def greet(name="Towering Timmy") -> str:
     E.g. if given as "Towering Timmy" it should
          return "Well hello, Towering Timmy"
     """
-    the_answer = str("Well hello") + name
+    the_answer = str("Well hello, ") + name
     return the_answer
 
 
@@ -152,7 +151,7 @@ def pet_filter(letter="a") -> List:
         "fancy rat and lab rat", "mink", "red fox", "hedgehog", "guppy"
     ]
     # fmt: on
-    filtered = list(pet for pet in pets if letter in letter in pets)
+    filtered = [pet for pet in pets if letter in letter in pets]
     return filtered
 
 

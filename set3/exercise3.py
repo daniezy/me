@@ -28,31 +28,56 @@ def advancedGuessingGame():
     Remember to think modular. Try to keep your functions small and single
     purpose if you can!
     """
-    def super_asker(lowerbound, upperbound):
-      print("\nThis is thee guessing game")
-    lowerbound = super_asker(input(f"enter a {lowerbound}: "))
-    upperbound = super_asker(input(f"enter an {upperbound}: "))
-    input(f"a number between a {lowerbound} and {upperbound}?: )
-      lowerbound = int
-      upperbound = int
-  else:
-    print("\nInput a number only")
-  actualNumber = random.randint({lowerbound}, {upperbound})
-  guessedNumber = range({lowerbound}, {upperbound})
-
-  while not guessed:
-    try:
-      guessedNumber = int(input("guess another number: "))
-      if guessedNumber == actualNumber 
-print("You got it!")
-  else guessedNumber < actualNumber:
-    input("too small try again:")
-      if actualNumber < guessedNumber
-      input("too large try again:")
-    return "You got it!"
 
 
-    # the tests are looking for the exact string "You got it!". Don't modify that!
+import random
+
+
+def get_integer_input(prompt):
+    while True:
+        try:
+            value = int(input(prompt))
+            return value
+        except ValueError:
+            print("Please enter a valid integer.")
+
+
+def super_asker(lowerbound, upperbound):
+    print("\nThis is the guessing game")
+
+    actualNumber = random.randint(lowerbound, upperbound)
+    while True:
+        guessedNumber = get_integer_input(
+            f"Guess a number between {lowerbound} and {upperbound}: "
+        )
+
+        if guessedNumber == actualNumber:
+            print("You got it!")
+            break
+        elif guessedNumber < actualNumber:
+            print("Too small, try again.")
+        else:
+            print("Too large, try again.")
+
+
+def advancedGuessingGame():
+    print("Welcome to the Advanced Guessing Game!")
+
+    while True:
+        lowerbound = get_integer_input("Enter the lowerbound: ")
+        upperbound = get_integer_input("Enter the upperbound: ")
+
+        if upperbound <= lowerbound:
+            print("Upper bound must be greater than lower bound.")
+        else:
+            super_asker(lowerbound, upperbound)
+            break
+
+
+# Call the function to start the game
+advancedGuessingGame()
+
+# the tests are looking for the exact string "You got it!". Don't modify that!
 
 
 if __name__ == "__main__":

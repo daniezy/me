@@ -32,12 +32,11 @@ if (guess) == actual_number:
 else:
     mid = (low + high)//2
     input(f'Incorrect but you can input a number between {guess} and {mid}:')
-    elif guess < actual_number:
-        low = mid + 1
-    else:
-        high = mid - 1
-
-    return {"guess": guess, "tries": tries}
+elif guess < actual_number:
+    low = mid + 1
+else:
+    high = mid - 1
+return {"guess": guess, "tries": tries}
 
 
 if __name__ == "__main__":

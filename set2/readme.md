@@ -1,3 +1,5 @@
 TODO: Reflect on what you learned this week and what is still unclear.
 
-excerise 2 prints 'MC hammer'
+exersze 2 prints 'MC hammer'
+
+- leanred how to write scripts
