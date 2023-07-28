@@ -46,12 +46,12 @@ def stubborn_asker(low, high):
 
     Look up the docs for a function called "input"
     """
-while True:
-    answer = input(f"number between {low} and {high}":)
-    if low < int(answer) < high:
-        print(f"correcttt {answer} is right")
-    else:
-        print(f'{answer} is not betwwen {low} and {high}')
+    while True:
+        answer = input(f"number between {low} and {high}")
+        if low < int(answer) < high:
+            print(f"correcttt {answer} is right")
+        else:
+            print(f"{answer} is not betwwen {low} and {high}")
 
 
 def not_number_rejector(message):
@@ -62,12 +62,10 @@ def not_number_rejector(message):
     When you do get a number, return it.
     """
     while True:
-            answer =int(input(message))
-            print("yep {message} is correct")
-            return (answer)
-    else:
+        answer = int(input(message))
+        print("yep {message} is correct")
+        return answer
         print("{} not correct try formtat".format(e))
-
 
 
 def super_asker(low, high):
@@ -76,12 +74,11 @@ def super_asker(low, high):
     Combine what you learnt from stubborn_asker and not_number_rejector
     to make a function that does it all!
     """
-while True:
-print(f"give me a number between {low} and {high}:")
-    answer = int(input((message)))
-if low < answer < high :
-    print("yep! {} is right". format(answer))
-    return(answer)
+    while True:
+        answer = int(input(f"give me a number between {low} and {high}:"))
+        if low < answer < high:
+            print("yep! {} is right".format(answer))
+            return answer
 
 
 if __name__ == "__main__":
