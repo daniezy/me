@@ -33,13 +33,18 @@ def advancedGuessingGame():
 import random
 
 
+<<<<<<< HEAD
 def super_asker(prompt):
-    while True:
+=======
+def get_integer_input(prompt):
+>>>>>>> d013b9ec628b1d0ad04438740682cb5cf5ebe20b
+while True:
         try:
             value = int(input(prompt))
             return value
         except ValueError:
-            print("Please enter a valid number.")
+<<<<<<< HEAD
+print("Please enter a valid number.")
 
 
 def main():
@@ -65,6 +70,46 @@ if __name__ == "__main__":
     main()
 
     # the tests are looking for the exact string "You got it!". Don't modify that!
+=======print("Please enter a valid integer.")
+
+
+def super_asker(lowerbound, upperbound):
+    print("\nThis is the guessing game")
+
+    actualNumber = random.randint(lowerbound, upperbound)
+    while True:
+        guessedNumber = get_integer_input(
+            f"Guess a number between {lowerbound} and {upperbound}: "
+        )
+
+        if guessedNumber == actualNumber:
+            print("You got it!")
+            break
+        elif guessedNumber < actualNumber:
+            print("Too small, try again.")
+        else:
+            print("Too large, try again.")
+
+
+def advancedGuessingGame():
+    print("Welcome to the Advanced Guessing Game!")
+
+    while True:
+        lowerbound = get_integer_input("Enter the lowerbound: ")
+        upperbound = get_integer_input("Enter the upperbound: ")
+
+        if upperbound <= lowerbound:
+            print("Upper bound must be greater than lower bound.")
+        else:
+            super_asker(lowerbound, upperbound)
+            break
+
+
+# Call the function to start the game
+advancedGuessingGame()
+
+# the tests are looking for the exact string "You got it!". Don't modify that!
+>>>>>>> d013b9ec628b1d0ad04438740682cb5cf5ebe20b
 
 
 if __name__ == "__main__":

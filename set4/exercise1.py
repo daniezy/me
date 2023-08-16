@@ -149,13 +149,36 @@ def pokedex(low=1, high=5):
          get very long. If you are accessing a thing often, assign it to a
          variable and then future access will be easier.
     """
-    id = 5
-    url = f"https://pokeapi.co/api/v2/pokemon/{id}"
-    r = requests.get(url)
-    if r.status_code is 200:
-        the_json = json.loads(r.text)
+    import requests
 
-    return {"name": None, "weight": None, "height": None}
+
+import json
+
+
+def pokedex(low=1, high=5):
+    """Return the name, height, and weight of the tallest pokemon in the range low to high.
+
+    Low and high are the range of pokemon ids to search between.
+    Using the Pokemon API: https://pokeapi.co get some JSON using the request library
+    (a working example is filled in below).
+    Parse the JSON and extract the values needed.
+    """
+    tallest_pokemon = {"name": None, "weight": None, "height": None}
+    max_height = 0
+
+    for id in range(low, high + 1):
+        url = f"https://pokeapi.co/api/v2/pokemon/{id}"
+        r = requests.get(url)
+        if r.status_code == 200:
+            pokemon_data = json.loads(r.text)
+            height = pokemon_data["height"]
+            if height > max_height:
+                max_height = height
+                tallest_pokemon["name"] = pokemon_data["name"]
+                tallest_pokemon["weight"] = pokemon_data["weight"]
+                tallest_pokemon["height"] = height
+
+    return tallest_pokemon
 
 
 def diarist():

@@ -25,17 +25,6 @@ def binary_search(low, high, actual_number):
     guess = 0
 
     # Write your code in here
-    guess = (+1)
-binary_search: input(f"(guess) a number between {low} and {high}:")
-if (guess) == actual_number:
-    print('correct')
-else:
-    mid = (low + high)//2
-    input(f'Incorrect but you can input a number between {guess} and {mid}:')
-    elif guess < actual_number:
-        low = mid + 1
-    else:
-        high = mid - 1
 
     return {"guess": guess, "tries": tries}
 
