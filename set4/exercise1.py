@@ -37,10 +37,40 @@ def get_some_details():
          dictionary, you'll need integer indeces for lists, and named keys for
          dictionaries.
     """
-    json_data = open(LOCAL + "/lazyduck.json").read()
 
+
+import json
+
+
+def get_some_details():
+    """Parse some JSON.
+
+    In lazyduck.json is a description of a person from https://randomuser.me/
+    Read it in and use the json library to convert it to a dictionary.
+    Return a new dictionary that just has the last name, password, and the
+    number you get when you add the postcode to the id-value.
+    TIP: Make sure that you add the numbers, not concatenate the strings.
+         E.g. 2000 + 3000 = 5000 not 20003000
+    TIP: Keep a close eye on the format you get back. JSON is nested, so you
+         might need to go deep. E.g to get the name title you would need to:
+         data["results"][0]["name"]["title"]
+         Look out for the type of brackets. [] means list and {} means
+         dictionary, you'll need integer indices for lists, and named keys for
+         dictionaries.
+    """
+    json_data = open(LOCAL + "/lazyduck.json").read()
     data = json.loads(json_data)
-    return {"lastName": None, "password": None, "postcodePlusID": None}
+    last_name = data["results"][0]["name"]["last"]
+    password = data["results"][0]["login"]["password"]
+    postcode = int(data["results"][0]["location"]["postcode"])
+    id_value = int(data["results"][0]["id"]["value"].replace("-", ""))
+    postcode_plus_id = postcode + id_value
+
+    return {
+        "lastName": last_name,
+        "password": password,
+        "postcodePlusID": postcode_plus_id,
+    }
 
 
 def wordy_pyramid():
@@ -77,9 +107,32 @@ def wordy_pyramid():
     ]
     TIP: to add an argument to a URL, use: ?argName=argVal e.g. &wordlength=
     """
-    pyramid = []
 
+
+import requests
+
+
+def get_random_word(length):
+    url = f"https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={length}"
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.text.strip()
+    return get_random_word
+
+
+def word_pyramid():
+    pyramid = []
+    for length in range(3, 21, 2):
+        word = get_random_word(length)
+        while not word:
+            word = get_random_word(length)
+        pyramid.append(word)
     return pyramid
+
+
+if __name__ == "__main__":
+    word_pyramid_result = word_pyramid()
+    print(word_pyramid_result)
 
 
 def pokedex(low=1, high=5):
@@ -115,7 +168,7 @@ def diarist():
     TIP: you need to write a string, so you'll need to cast your number
     TIP: Trispokedovetiles(laser).gcode uses windows style line endings. CRLF
          not just LF like unix does now. If your comparison is failing this
-         might be why. Try in rather than == and that might help.
+         might be why. Try in rather , 'e'than == and that might help.
     TIP: remember to commit 'lasers.pew' and push it to your repo, otherwise
          the test will have nothing to look at.
     TIP: this might come in handy if you need to hack a 3d print file in the future.

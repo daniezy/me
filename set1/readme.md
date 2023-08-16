@@ -1,3 +1,2 @@
 TODO: Reflect on what you learned this week and what is still unclear.
-
-hello, I am verty smart
+How to print and return a string, no questions for this section
